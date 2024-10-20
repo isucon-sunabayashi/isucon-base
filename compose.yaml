@@ -1,0 +1,47 @@
+---
+
+services:
+  #
+  # Loki
+  # Logのストレージと検索ツール
+  #
+  loki:
+    image: grafana/loki:3.2.1
+    ports:
+      - 3100:3100
+    environment:
+      TZ: Asia/Tokyo
+    volumes:
+      - type: bind
+        source: ${PWD}/tmp/containers/loki/
+        target: /loki/
+
+  #
+  # Prometheus
+  # メトリクス収集ツール
+  #
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    ports:
+      - 9090:9090
+    environment:
+      TZ: Asia/Tokyo
+    volumes:
+      - type: bind
+        source: ./tmp/prometheus.yml
+        target: /etc/prometheus/prometheus.yml
+
+  #
+  # Grafana
+  # 可視化ツール
+  #
+  grafana:
+    image: grafana/grafana:11.2.2
+    ports:
+      - 3000:3000
+    environment:
+      TZ: Asia/Tokyo
+    volumes:
+      - type: bind
+        source: ${PWD}/containers/grafana/etc/grafana/provisioning/datasources/
+        target: /etc/grafana/provisioning/datasources/

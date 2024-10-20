@@ -1,0 +1,16 @@
+global:
+  # scrape_interval: メトリクスの収集間隔(def: 1m)
+  scrape_interval: 1s
+  # evaluation_interval: ルールの評価間隔(def: 1m)
+  evaluation_interval: 5s
+
+scrape_configs:
+  - job_name: "node_exporter"
+    static_configs:
+      - targets: ${ENV_NODE_EXPORTER_TARGETS}
+  - job_name: "mysql_exporter"
+    static_configs:
+      - targets: ${ENV_MYSQL_EXPORTER_TARGETS}
+  - job_name: "nginx_exporter"
+    static_configs:
+      - targets: ${ENV_NGINX_EXPORTER_TARGETS}

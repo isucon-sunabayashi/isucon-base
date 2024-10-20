@@ -12,6 +12,10 @@ setup: ## 各isu-serverのセットアップ
 	@bash scripts/setup-fluent-bit.sh
 	@bash scripts/setup-mysql-users.sh
 
+.PHONY: reup
+reup: ## コンテナを再アップ
+	@bash scripts/reup-containers.sh
+
 ################################################################################
 # Utility-Command help
 ################################################################################
