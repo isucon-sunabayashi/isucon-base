@@ -2,6 +2,10 @@
 create-sshconfig: ## ~/.ssh/config-for-isucon.d/config 作成
 	@bash scripts/create-sshconfig.sh
 
+.PHONY: check-ssh
+check-ssh: tmp/hosts.csv ## sshできるか確認
+	@cat tmp/hosts.csv | cut -d',' -f1 | xargs -I{} bash -c 'echo "----[ {} ]" && ssh {} "ls"'
+
 ################################################################################
 # Utility-Command help
 ################################################################################
