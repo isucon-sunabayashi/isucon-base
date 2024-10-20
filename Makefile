@@ -17,6 +17,29 @@ reup: ## コンテナを再アップ
 	@bash scripts/reup-containers.sh
 
 ################################################################################
+# ポートフォワーディング for Loki
+################################################################################
+.PHONY: port-forward-3100-isu-1
+port-forward-3100-isu-1: ## 3100番ポートをフォワード
+	$(call port-forward-3100,isu-1)
+
+.PHONY: port-forward-3100-isu-2
+port-forward-3100-isu-2: ## 3100番ポートをフォワード
+	$(call port-forward-3100,isu-2)
+
+.PHONY: port-forward-3100-isu-3
+port-forward-3100-isu-3: ## 3100番ポートをフォワード
+	$(call port-forward-3100,isu-3)
+
+.PHONY: port-forward-3100-isu-4
+port-forward-3100-isu-4: ## 3100番ポートをフォワード
+	$(call port-forward-3100,isu-4)
+
+.PHONY: port-forward-3100-isu-5
+port-forward-3100-isu-5: ## 3100番ポートをフォワード
+	$(call port-forward-3100,isu-5)
+
+################################################################################
 # Kaizen
 ################################################################################
 .PHONY: clean-logs
@@ -73,6 +96,13 @@ define help
   grep -E '^[\.a-zA-Z0-9_-]+:.*?## .*$$' $(1) \
   | grep --invert-match "## non-help" \
   | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+endef
+
+# 指定されたhostに3100番のポートフォワーディング
+# $(1): ホスト名
+# 使い方例: $(call port-forward-3100,host名)
+define port-forward-3100
+  (grep '$(1)' tmp/isu-servers &> /dev/null && ssh $(1) -R 3100:localhost:3100 -N) || echo '$(1)がありません'
 endef
 
 ################################################################################
