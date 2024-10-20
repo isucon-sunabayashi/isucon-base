@@ -97,6 +97,10 @@ show-services: ## isuconに関連があるサービス一覧表示
 show-table-counts: ## isuconに関連があるdb.tableのカウント一覧
 	@bash scripts/show-table-counts.sh
 
+.PHONY: show-tables
+show-tables: ## isuconに関連があるdb.table情報一覧
+	@bash scripts/show-tables.sh
+
 ################################################################################
 # Utility-Command help
 ################################################################################
