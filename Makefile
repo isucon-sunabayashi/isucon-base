@@ -23,6 +23,10 @@ reup: ## コンテナを再アップ
 show-services: ## isuconに関連があるサービス一覧表示
 	@bash scripts/show-services.sh
 
+.PHONY: show-table-counts
+show-table-counts: ## isuconに関連があるdb.tableのカウント一覧
+	@bash scripts/show-table-counts.sh
+
 ################################################################################
 # Utility-Command help
 ################################################################################
