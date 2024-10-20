@@ -46,6 +46,18 @@ port-forward-3100-isu-5: ## 3100番ポートをフォワード
 clean-logs: ## ログファイルを削除
 	@bash scripts/clean-logs.sh
 
+.PHONY: download-and-analyze-logs
+download-and-analyze-logs: ## ログファイルをダウンロードして分析
+	@bash scripts/download-and-analyze-logs.sh
+
+.PHONY: alp-result
+alp-result: ## alpの結果を表示
+	@cat tmp/analysis/latest/analyzed-alp-nginx-access.log.*
+
+.PHONY: slow-query-result
+slow-query-result: ## slow-queryの結果を表示
+	@cat tmp/analysis/latest/analyzed-pt-query-digest-slow.log.* | less
+
 ################################################################################
 # Deploy
 ################################################################################
