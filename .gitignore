@@ -1,5 +1,18 @@
 .env
 
+#
+# ディレクトリだけgit管理下に置きたい場合、.gitkeepを最後にする
+#
 !tmp/
 tmp/*
+
+#
+# 素振りの時は削除
+#
+!webapp/
+isu-webapp/*
+!isu-common/
+isu-common/*
+
+# 最後にする
 !.gitkeep
