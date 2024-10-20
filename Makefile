@@ -22,6 +22,7 @@ reup: ## コンテナを再アップ
 .PHONY: download
 download: ## isucon関連の利用するファイルをダウンロード
 	@bash scripts/download-webapp.sh
+	@bash scripts/download-nginx.sh
 
 ################################################################################
 # Info
