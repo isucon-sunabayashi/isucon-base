@@ -6,6 +6,12 @@ create-sshconfig: ## ~/.ssh/config-for-isucon.d/config 作成
 check-ssh: tmp/hosts.csv ## sshできるか確認
 	@cat tmp/hosts.csv | cut -d',' -f1 | xargs -I{} bash -c 'echo "----[ {} ]" && ssh {} "ls"'
 
+.PHONY: setup
+setup: ## 各isu-serverのセットアップ
+	@bash scripts/setup-apt-get.sh
+	@bash scripts/setup-fluent-bit.sh
+	@bash scripts/setup-mysql-users.sh
+
 ################################################################################
 # Utility-Command help
 ################################################################################
