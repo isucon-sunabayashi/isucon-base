@@ -13,6 +13,11 @@ tmp/*
 isu-webapp/*
 !isu-common/
 isu-common/*
+isu-1/*
+isu-2/*
+isu-3/*
+isu-4/*
+isu-5/*
 
 # 最後にする
 !.gitkeep
