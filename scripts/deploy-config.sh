@@ -54,10 +54,12 @@ cat tmp/isu-servers | xargs -I{} ssh {} 'echo ----[ {} ] && systemctl status pro
 #
 echo ''
 echo '----[ 🚀Deploy Fluent-Bit config🚀 ]'
-readonly FLUENT_BIT_CONF_PATH='/etc/fluent-bit/fluent-bit.conf'
-cat tmp/isu-servers | xargs -I{} rsync -az --rsync-path='sudo rsync' "./isu-common${FLUENT_BIT_CONF_PATH}" "{}:${FLUENT_BIT_CONF_PATH}"
-cat tmp/isu-servers | xargs -I{} ssh {} "sudo chown root:root ${FLUENT_BIT_CONF_PATH} && sudo chmod 644 ${FLUENT_BIT_CONF_PATH}"
+readonly FLUENT_BIT_PATH='/etc/fluent-bit/'
+cat tmp/isu-servers | xargs -I{} rsync -az --rsync-path='sudo rsync' "./isu-common${FLUENT_BIT_PATH}" "{}:${FLUENT_BIT_PATH}"
+cat tmp/isu-servers | xargs -I{} ssh {} "sudo chown root:root ${FLUENT_BIT_PATH} && sudo chmod 644 ${FLUENT_BIT_PATH}"
+cat tmp/isu-servers | xargs -I{} ssh {} "sudo mkdir -p /var/log/fluent-bit/ && sudo chown -R root:root /var/log/fluent-bit/ && sudo chmod 777 -R /var/log/fluent-bit/"
 cat tmp/isu-servers | xargs -I{} ssh {} '(curl -s "http://localhost:3100/ready" &> /dev/null && sudo systemctl restart fluent-bit) || echo "fluent-bit は再起動しませんでした"'
+cat tmp/isu-servers | xargs -I{} ssh {} "sudo chown -R root:root /var/log/fluent-bit/ && sudo chmod 777 -R /var/log/fluent-bit/"
 cat tmp/isu-servers | xargs -I{} ssh {} 'echo ----[ {} ] && systemctl status fluent-bit'
 
 #
