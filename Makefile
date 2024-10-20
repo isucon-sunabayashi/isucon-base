@@ -1,3 +1,7 @@
+.PHONY: create-sshconfig
+create-sshconfig: ## ~/.ssh/config-for-isucon.d/config 作成
+	@bash scripts/create-sshconfig.sh
+
 ################################################################################
 # Utility-Command help
 ################################################################################
