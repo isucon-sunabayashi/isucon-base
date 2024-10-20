@@ -19,6 +19,7 @@ readonly APT_TOOLS=(
   "make"
   "jq"
   "git"
+  "ripgrep"
   "psmisc"                     # pstree
   "prometheus-node-exporter"   # for prometheus
   "prometheus-mysqld-exporter" # for prometheus
