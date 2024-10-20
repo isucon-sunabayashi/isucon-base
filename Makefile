@@ -16,6 +16,13 @@ setup: ## 各isu-serverのセットアップ
 reup: ## コンテナを再アップ
 	@bash scripts/reup-containers.sh
 
+.PHONY: loki-sample
+loki-sample: ## Lokiにちゃんとログが入っているか確認
+	$(eval START=$(shell date -u +'%Y-%m-%dT00:00:00+09:00'))
+	$(eval END=$(shell date -u +'%Y-%m-%dT23:59:59+09:00'))
+	$(eval JOB='nginx.access')
+	@curl -s "http://localhost:3100/loki/api/v1/query_range" --data-urlencode 'query={job="nginx.access"}' --data-urlencode 'start=${START}' --data-urlencode 'end=${END}' --data-urlencode 'limit=10' | jq '.data.result'
+
 ################################################################################
 # ポートフォワーディング for Loki
 ################################################################################
