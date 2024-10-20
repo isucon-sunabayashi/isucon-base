@@ -65,6 +65,10 @@ slow-query-result: ## slow-queryの結果を表示
 deploy-config: ## 各サーバに設定ファイルをデプロイ
 	@bash scripts/deploy-config.sh
 
+.PHONY: deploy-app
+deploy-app: ## 各サーバにAppをデプロイ
+	@bash scripts/deploy-app.sh
+
 ################################################################################
 # Switch to golang app
 ################################################################################
