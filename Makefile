@@ -23,6 +23,7 @@ reup: ## コンテナを再アップ
 download: ## isucon関連の利用するファイルをダウンロード
 	@bash scripts/download-webapp.sh
 	@bash scripts/download-nginx.sh
+	@bash scripts/download-mysql.sh
 
 ################################################################################
 # Info
