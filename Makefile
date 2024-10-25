@@ -1,3 +1,9 @@
+.PHONY: clean
+clean: ## isuconでDLしたものを全て削除
+	@rm -rf isu-* tmp/*
+	@mkdir isu-webapp isu-common
+	@touch isu-webapp/.gitkeep isu-common/.gitkeep
+
 .PHONY: create-sshconfig
 create-sshconfig: ## ~/.ssh/config-for-isucon.d/config 作成
 	@bash scripts/create-sshconfig.sh
