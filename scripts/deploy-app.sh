@@ -12,12 +12,11 @@ echo '-------[ 🚀Deploy App🚀 ]'
 
 #
 # App
+# .envにて、LOCAL_APP_PATH, REMOTE_APP_PATH, GO_APP_NAMEを設定していること
+# 例: REMOTE_APP_PATH=/home/isucon/private_isu/webapp/golang, LOCAL_APP_PATH=./isu-webapp/golang, GO_APP_NAME=isu-go
 #
-readonly LOCAL_APP_PATH='./isu-webapp/golang/'
-readonly REMOTE_APP_PATH='/home/isucon/private_isu/webapp/golang/'
-readonly APP_SERVICE_NAME='isu-go'
-cat tmp/isu-servers | xargs -I{} rsync -az "${LOCAL_APP_PATH}" "{}:${REMOTE_APP_PATH}"
-cat tmp/isu-servers | xargs -I{} ssh {} "export PATH=\$PATH:/home/isucon/.local/go/bin && cd ${REMOTE_APP_PATH} && make app && sudo systemctl restart ${APP_SERVICE_NAME}"
+cat tmp/isu-servers | xargs -I{} rsync -az "${LOCAL_APP_PATH}/" "{}:${REMOTE_APP_PATH}/"
+cat tmp/isu-servers | xargs -I{} ssh {} "export PATH=\$PATH:/home/isucon/.local/go/bin && cd ${REMOTE_APP_PATH} && make app && sudo systemctl restart ${GO_APP_NAME}"
 
 #
 # 通知
