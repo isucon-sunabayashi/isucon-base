@@ -31,6 +31,7 @@ setup: ## 各isu-serverのセットアップ
 setup-1st-bench: ## 1回目のbenchmarkに必要なことを各isu-serverのセットアップ
 	@bash scripts/setup-1st-bench-nginx.sh
 	@bash scripts/setup-1st-bench-mysql.sh
+	@bash scripts/setup-1st-bench-prometheus-mysqld-exporter.sh
 
 .PHONY: reup
 reup: ## コンテナを再アップ
