@@ -8,7 +8,7 @@ set -eu
 #
 # 通知
 #
-echo '-------[ 🚀Download env🚀]'
+echo '-------[ 🚀Download env🚀 ]'
 
 #
 # env.sh
@@ -20,6 +20,4 @@ cat tmp/isu-servers | xargs -I{} rsync -az {}:${ENV_SH_PATH} ./{}/home/isucon/en
 #
 # 通知
 #
-echo '----'
 echo '👍️Done: Download env'
-echo '----'

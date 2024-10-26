@@ -20,6 +20,4 @@ cat tmp/isu-servers | head -n1 | xargs -I{} rsync -az --exclude app {}:${MYSQLD_
 #
 # 通知
 #
-echo '----'
 echo '👍️Done: Download mysql'
-echo '----'

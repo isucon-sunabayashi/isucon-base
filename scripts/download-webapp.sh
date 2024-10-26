@@ -19,6 +19,4 @@ cat tmp/isu-servers | head -n1 | xargs -I{} rsync -az --exclude app {}:${WEBAPP_
 #
 # 通知
 #
-echo '----'
 echo '👍️Done: Download webapp'
-echo '----'

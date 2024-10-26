@@ -8,7 +8,7 @@ set -eu
 #
 # 通知
 #
-echo '-------[ 🚀Download nginx]'
+echo '-------[ 🚀Download nginx🚀 ]'
 
 #
 # nginx
@@ -22,6 +22,4 @@ cat tmp/isu-servers | head -n1 | xargs -I{} rsync -az {}:${NGINX_SITES_AVAILABLE
 #
 # 通知
 #
-echo '----'
 echo '👍️Done: Download nginx'
-echo '----'
