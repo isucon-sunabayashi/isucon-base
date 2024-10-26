@@ -12,9 +12,10 @@ echo '-------[ 🚀Download webapp🚀 ]'
 
 #
 # webapp
+# .envにて、REMOTE_APP_PATHを設定していること
+# 例: REMOTE_APP_PATH=/home/isucon/private_isu/webapp/golang
 #
-readonly WEBAPP_APP_DIR='/home/isucon/private_isu/webapp/golang'
-cat tmp/isu-servers | head -n1 | xargs -I{} rsync -az --exclude app {}:${WEBAPP_APP_DIR} ./isu-webapp/
+cat tmp/isu-servers | head -n1 | xargs -I{} rsync -az --exclude app {}:${REMOTE_APP_PATH} ./isu-webapp/
 
 #
 # 通知
