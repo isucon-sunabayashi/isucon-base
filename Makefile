@@ -11,6 +11,7 @@ getting-started: ## Getting Started
 	@echo '03: make check-ssh'
 	@echo '04: make setup'
 	@echo '05: make download'
+	@echo '06: make setup-1st-bench'
 
 .PHONY: create-sshconfig
 create-sshconfig: ## ~/.ssh/config-for-isucon.d/config 作成
@@ -25,6 +26,10 @@ setup: ## 各isu-serverのセットアップ
 	@bash scripts/setup-apt-get.sh
 	@bash scripts/setup-fluent-bit.sh
 	@bash scripts/setup-mysql-users.sh
+
+.PHONY: setup-1st-bench
+setup-1st-bench: ## 1回目のbenchmarkに必要なことを各isu-serverのセットアップ
+	@bash scripts/setup-1st-bench-nginx.sh
 
 .PHONY: reup
 reup: ## コンテナを再アップ
