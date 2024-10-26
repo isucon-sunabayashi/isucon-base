@@ -4,6 +4,14 @@ clean: ## isuconでDLしたものを全て削除
 	@mkdir isu-webapp isu-common
 	@touch isu-webapp/.gitkeep isu-common/.gitkeep
 
+.PHONY: getting-started
+getting-started: ## Getting Started
+	@echo '01: isuconのCFn Stackを作成'
+	@echo '02: make create-sshconfig'
+	@echo '03: make check-ssh'
+	@echo '04: make setup'
+	@echo '05: make download'
+
 .PHONY: create-sshconfig
 create-sshconfig: ## ~/.ssh/config-for-isucon.d/config 作成
 	@bash scripts/create-sshconfig.sh
@@ -117,7 +125,7 @@ show-tables: ## isuconに関連があるdb.table情報一覧
 ################################################################################
 # Utility-Command help
 ################################################################################
-.DEFAULT_GOAL := help
+.DEFAULT_GOAL := getting-started
 
 ################################################################################
 # マクロ
