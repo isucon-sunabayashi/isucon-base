@@ -11,8 +11,8 @@ getting-started: ## Getting Started
 	@echo '03: make check-ssh'
 	@echo '04: make show-services'
 	@echo '05: ssh isu-1をして.envに必要情報を記述'
-	@echo '06: make setup'
-	@echo '07: make download'
+	@echo '06: make download'
+	@echo '07: make setup'
 	@echo '08: make setup-1st-bench'
 	@echo '09: make deploy-config'
 
