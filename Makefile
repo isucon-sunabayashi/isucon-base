@@ -12,6 +12,7 @@ getting-started: ## Getting Started
 	@echo '04: make setup'
 	@echo '05: make download'
 	@echo '06: make setup-1st-bench'
+	@echo '07: make deploy-config'
 
 .PHONY: create-sshconfig
 create-sshconfig: ## ~/.ssh/config-for-isucon.d/config 作成
