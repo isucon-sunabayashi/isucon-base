@@ -18,7 +18,8 @@ getting-started: ## Getting Started
 	@echo '10: make setup'
 	@echo '11: make setup-1st-bench'
 	@echo '12: make deploy-config'
-	@echo '13: 1st benchmark'
+	@echo '13: make clean-logs'
+	@echo '14: 1st benchmark'
 
 .PHONY: create-sshconfig
 create-sshconfig: ## ~/.ssh/config-for-isucon.d/config 作成
