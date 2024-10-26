@@ -9,10 +9,12 @@ getting-started: ## Getting Started
 	@echo '01: isuconのCFn Stackを作成'
 	@echo '02: make create-sshconfig'
 	@echo '03: make check-ssh'
-	@echo '04: make setup'
-	@echo '05: make download'
-	@echo '06: make setup-1st-bench'
-	@echo '07: make deploy-config'
+	@echo '04: make show-services'
+	@echo '05: ssh isu-1をして.envに必要情報を記述'
+	@echo '06: make setup'
+	@echo '07: make download'
+	@echo '08: make setup-1st-bench'
+	@echo '09: make deploy-config'
 
 .PHONY: create-sshconfig
 create-sshconfig: ## ~/.ssh/config-for-isucon.d/config 作成
