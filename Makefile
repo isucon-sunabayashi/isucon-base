@@ -12,9 +12,10 @@ getting-started: ## Getting Started
 	@echo '04: make show-services'
 	@echo '05: ssh isu-1をして.envに必要情報を記述'
 	@echo '06: make download'
-	@echo '07: make setup'
-	@echo '08: make setup-1st-bench'
-	@echo '09: make deploy-config'
+	@echo '07: make switch-to-golang-isu-app'
+	@echo '08: make setup'
+	@echo '09: make setup-1st-bench'
+	@echo '10: make deploy-config'
 
 .PHONY: create-sshconfig
 create-sshconfig: ## ~/.ssh/config-for-isucon.d/config 作成
