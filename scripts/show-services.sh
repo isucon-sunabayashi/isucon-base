@@ -15,3 +15,13 @@ echo '-------[ 🚀Show services🚀 ]'
 # 決め打ちなので、柔軟に増やす
 #
 cat tmp/isu-servers | xargs -I{} ssh {} 'echo ----[ {} ] && systemctl list-units --type=service --all | rg "(isu|nginx|mysql|fluent-bit|prometheus)"'
+
+#
+# appのgolang版を探す
+#
+cat tmp/isu-servers | head -n1 | xargs -I{} ssh {} 'echo ----[ {} ] && find . -type d -name "golang"'
+
+#
+# Serviceの場所を探す
+#
+cat tmp/isu-servers | head -n1 | xargs -I{} ssh {} 'echo ----[ {} ] && ls -1 /etc/systemd/system/isu*'
