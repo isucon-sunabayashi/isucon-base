@@ -30,6 +30,7 @@ setup: ## 各isu-serverのセットアップ
 .PHONY: setup-1st-bench
 setup-1st-bench: ## 1回目のbenchmarkに必要なことを各isu-serverのセットアップ
 	@bash scripts/setup-1st-bench-nginx.sh
+	@bash scripts/setup-1st-bench-mysql.sh
 
 .PHONY: reup
 reup: ## コンテナを再アップ
