@@ -11,21 +11,15 @@ set -eu
 echo '-------[ 🚀Switch to golang isu-app🚀 ]'
 
 #
-# app名
-# 適宜変更
-#
-readonly DEFAULT_APP_NAME='isu-ruby'
-readonly GOLANG_APP_NAME='isu-go'
-
-#
 # Switch
-#
-cat tmp/isu-servers | xargs -I{} ssh {} "sudo systemctl disable --now ${DEFAULT_APP_NAME} && sudo systemctl enable --now ${GOLANG_APP_NAME}"
+# .envにて DEFAULT_APP_NAME, GO_APP_NAME を設定していること
+# 例: DEFAULT_APP_NAME=isu-ruby, GO_APP_NAME=isu-go
+cat tmp/isu-servers | xargs -I{} ssh {} "sudo systemctl disable --now ${DEFAULT_APP_NAME} && sudo systemctl enable --now ${GO_APP_NAME}"
 
 #
 # 通知
 #
 echo '----'
 echo '👍️Done: Switch to golang isu-app'
-cat tmp/isu-servers | xargs -I{} ssh {} "echo '----[ {} ]' && systemctl status ${GOLANG_APP_NAME}"
+cat tmp/isu-servers | xargs -I{} ssh {} "echo '----[ {} ]' && systemctl status ${GO_APP_NAME}"
 echo '----'
