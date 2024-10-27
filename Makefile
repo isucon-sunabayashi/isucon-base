@@ -1,3 +1,8 @@
+.PHONY: bench
+bench: ## benchmarkerを実行(private-isu用)
+	@make clean-logs
+	ssh isu-bench 'private_isu.git/benchmarker/bin/benchmarker -u private_isu.git/benchmarker/userdata -t http://192.168.1.10/'
+
 .PHONY: clean
 clean: ## isuconでDLしたものを全て削除
 	@rm -rf isu-* tmp/*
