@@ -19,6 +19,4 @@ cp snippets/etc/default/prometheus-mysqld-exporter isu-common/etc/default/
 #
 # 通知
 #
-echo '----'
 echo '👍️Done: isu-common/etc/default/prometheus-mysqld-exporter'
-echo '----'

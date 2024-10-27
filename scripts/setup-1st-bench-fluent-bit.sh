@@ -18,6 +18,4 @@ cp -rf snippets/etc/fluent-bit isu-common/etc/
 #
 # 通知
 #
-echo '----'
 echo '👍️Done: isu-common/etc/fluent-bit'
-echo '----'
