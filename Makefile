@@ -16,15 +16,19 @@ getting-started: ## Getting Started
 	@echo '03: make check-ssh'
 	@echo '04: make setup'
 	@echo '05: make show-services'
-	@echo '06: ssh isu-1をして.envに必要情報を記述'
+	@echo '06: 手動: ssh isu-1をして.envに必要情報を記述'
 	@echo '07: make download'
 	@echo '08: make switch-to-golang-isu-app'
-	@echo '09: ssh isu-1をしてgolangのappをビルドする方法をdeploy-app.shに反映、09の空deployできるまで'
+	@echo '09: 手動: ssh isu-1をしてgolangのappをビルドする方法をdeploy-app.shに反映、09の空deployできるまで'
 	@echo '10: make deploy-app'
 	@echo '11: make setup-1st-bench'
 	@echo '12: make deploy-config'
 	@echo '13: make clean-logs'
-	@echo '14: 1st benchmark'
+	@echo '14: 手動: 1st benchmark'
+	@echo '15: show-table-counts'
+	@echo '16: 1st benchmark'
+	@echo '17: show-table-counts'
+	@echo '18: show-tables'
 
 .PHONY: create-sshconfig
 create-sshconfig: ## ~/.ssh/config-for-isucon.d/config 作成
