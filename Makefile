@@ -12,7 +12,11 @@ clean: ## isuconでDLしたものを全て削除
 .PHONY: getting-started
 getting-started: ## Getting Started
 	@echo '01: isuconのCFn Stackを作成'
-	@echo '02: make create-sshconfig'
+	@echo '```tmp/hosts.csv'
+	@echo 'isu-1,***.***.***.***'
+	@echo 'isu-bench,***.***.***.***'
+	@echo '```'
+	@echo '02: make create-sshconfig(awsと通信したくない場合は、事前にtmp/hosts.csvを用意)'
 	@echo '03: make check-ssh'
 	@echo '04: make setup'
 	@echo '05: make show-services'
