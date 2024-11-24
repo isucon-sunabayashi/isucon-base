@@ -7,25 +7,10 @@ set -eu
 
 #
 # OUTPUT:
-# - tmp/hosts.csv                     // host名、IPアドレスのCSV
-# - tmp/isu-servers                   // benchを除いたhost名のリスト
 # - ~/.ssh/config-for-isucon.d/config // ssh接続設定ファイル
 #
 
-#
-# AWS CLIが上手く接続できるか確認
-#
-aws sts get-caller-identity || exit 1
-
-#
-# tmp/hosts.csvを作成
-#
 mkdir -p ~/.ssh/config-for-isucon.d
-aws ec2 describe-instances --filters 'Name=instance-state-name,Values=running' --output json --query 'Reservations[].Instances[]' \
-  | jq -rc '.[] | {ip: .NetworkInterfaces[0].Association.PublicIp, name: .Tags[] | select(.Key == "Name") | .Value}' \
-  | jq -src '. | sort_by(.name)[] | ["isu-\(.name | split("-")[1])", .ip] | @csv' \
-  | sed 's/"//g' \
-  > tmp/hosts.csv
 
 #
 # ~/.ssh/config-for-isucon.d/configを作成

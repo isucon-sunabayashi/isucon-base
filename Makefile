@@ -30,8 +30,11 @@ getting-started: ## Getting Started
 	@echo '17: show-table-counts'
 	@echo '18: show-tables'
 
+tmp/hosts.csv: ## tmp/hosts.csvをAWSと通信して作成
+	@bash scripts/create-hosts-csv.sh
+
 .PHONY: create-sshconfig
-create-sshconfig: ## ~/.ssh/config-for-isucon.d/config 作成
+create-sshconfig: tmp/hosts.csv ## ~/.ssh/config-for-isucon.d/config 作成
 	@bash scripts/create-sshconfig.sh
 
 .PHONY: check-ssh
