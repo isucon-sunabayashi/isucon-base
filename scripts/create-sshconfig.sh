@@ -16,7 +16,7 @@ mkdir -p ~/.ssh/config-for-isucon.d
 # ~/.ssh/config-for-isucon.d/configを作成
 #
 cat tmp/hosts.csv \
-  | awk -F, '{print "Host "$1"\n  HostName "$2"\n  User isucon\n  IdentityFile ~/.ssh/id_rsa\n  StrictHostKeyChecking no\n  UserKnownHostsFile /dev/null\n  LogLevel quiet"}' \
+  | awk -F, '{print "Host "$1"\n  HostName "$2"\n  User isucon\n  IdentityFile ~/.ssh/id_ed25519\n  StrictHostKeyChecking no\n  UserKnownHostsFile /dev/null\n  LogLevel quiet"}' \
   > ~/.ssh/config-for-isucon.d/config
 chmod 644 ~/.ssh/config-for-isucon.d/config
 
