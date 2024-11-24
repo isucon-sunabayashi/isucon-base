@@ -48,7 +48,7 @@ check-ssh: tmp/hosts.csv ## sshできるか確認
 .PHONY: setup
 setup: ## 各isu-serverのセットアップ
 	@bash scripts/setup-apt-get.sh
-	@bash scripts/setup-fluent-bit.sh
+	#@bash scripts/setup-fluent-bit.sh
 	@bash scripts/setup-mysql-users.sh
 
 .PHONY: setup-1st-bench
