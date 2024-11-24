@@ -33,6 +33,7 @@ getting-started: ## Getting Started
 	@echo '10: 手動: ssh isu-1をしてgolangのappをビルドする方法をscripts/deploy-app.shに反映、09の空deployできるまで'
 	@echo '11: make deploy-app'
 	@echo '12: make setup-1st-bench'
+	@echo '- isu-common/etc/nginx/nginx.confに設定をペースト'
 	@echo '13: make deploy-config'
 	@echo '14: make show-table-counts'
 	@echo '15: make show-tables'
