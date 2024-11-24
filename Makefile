@@ -50,6 +50,7 @@ setup: ## 各isu-serverのセットアップ
 	@bash scripts/setup-apt-get.sh
 	#@bash scripts/setup-fluent-bit.sh
 	@bash scripts/setup-mysql-users.sh
+	@bash scripts/setup-alp.sh
 
 .PHONY: setup-1st-bench
 setup-1st-bench: ## 1回目のbenchmarkに必要なことを各isu-serverのセットアップ
