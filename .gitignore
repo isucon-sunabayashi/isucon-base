@@ -6,6 +6,9 @@
 !tmp/
 tmp/*
 
+suburi/private-isu/tmp/*
+!suburi/private-isu/tmp/
+
 #
 # 素振りの時は削除
 #

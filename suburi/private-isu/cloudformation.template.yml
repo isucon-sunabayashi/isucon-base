@@ -1,0 +1,125 @@
+#
+# https://github.com/catatsuy/private-isu
+#
+AWSTemplateFormatVersion: '2010-09-09'
+Description: private-isu template
+
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: '192.168.0.0/16'
+
+  MySubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: '192.168.1.0/24'
+      AvailabilityZone: ap-northeast-1a
+
+  MyInternetGateway:
+    Type: AWS::EC2::InternetGateway
+
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref MyInternetGateway
+
+  MyRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+
+  PublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: AttachGateway
+    Properties:
+      RouteTableId: !Ref MyRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref MyInternetGateway
+
+  SubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref MySubnet
+      RouteTableId: !Ref MyRouteTable
+
+  MySecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH, HTTP, HTTPS access
+      VpcId: !Ref VPC
+      SecurityGroupIngress:
+        - IpProtocol: -1
+          CidrIp: 192.168.0.0/16
+        - IpProtocol: -1
+          CidrIp: ${ENV_MY_IP}/32
+
+  #
+  # アプリ
+  #
+  ServerInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      # Ubuntu 24.04
+      InstanceType: c7g.large
+      ImageId: ami-0bed62bba4100a4b7
+      SubnetId: !Ref MySubnet
+      PrivateIpAddress: '192.168.1.10'
+      SecurityGroupIds:
+        - !Ref MySecurityGroup
+      Tags:
+        - Key: Name
+          Value: isu-1
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          mkdir -p /home/isucon/.ssh
+          curl -s https://github.com/sunakan.keys >> /home/isucon/.ssh/authorized_keys
+          curl -s https://github.com/bayashiok.keys >> /home/isucon/.ssh/authorized_keys
+          chown -R isucon:isucon /home/isucon/.ssh
+          chmod 600 /home/isucon/.ssh/authorized_keys
+
+  #
+  # ベンチマーカー
+  #
+  BenchmarkerInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      # Ubuntu 24.04
+      InstanceType: c7g.xlarge
+      ImageId: ami-034a457f6af55d65d
+      SubnetId: !Ref MySubnet
+      PrivateIpAddress: '192.168.1.20'
+      SecurityGroupIds:
+        - !Ref MySecurityGroup
+      Tags:
+        - Key: Name
+          Value: isu-bench
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          mkdir -p /home/isucon/.ssh
+          curl -s https://github.com/sunakan.keys >> /home/isucon/.ssh/authorized_keys
+          curl -s https://github.com/bayashiok.keys >> /home/isucon/.ssh/authorized_keys
+          chown -R isucon:isucon /home/isucon/.ssh
+          chmod 600 /home/isucon/.ssh/authorized_keys
+
+  ServerEIP:
+    Type: AWS::EC2::EIP
+
+  BenchmarkerEIP:
+    Type: AWS::EC2::EIP
+
+  ServerEIPAssociation:
+    Type: AWS::EC2::EIPAssociation
+    Properties:
+      InstanceId: !Ref ServerInstance
+      EIP: !Ref ServerEIP
+
+  BenchmarkerEIPAssociation:
+    Type: AWS::EC2::EIPAssociation
+    Properties:
+      InstanceId: !Ref BenchmarkerInstance
+      EIP: !Ref BenchmarkerEIP
