@@ -18,12 +18,14 @@ readonly APT_TOOLS=(
   "neovim"
   "make"
   "jq"
+  "yq"
   "git"
   "ripgrep"
   "psmisc"                     # pstree
-  "prometheus-node-exporter"   # for prometheus
-  "prometheus-mysqld-exporter" # for prometheus
-  "prometheus-nginx-exporter"  # for prometheus
+  "percona-toolkit"            # pt-query-digest
+  #"prometheus-node-exporter"   # for prometheus
+  #"prometheus-mysqld-exporter" # for prometheus
+  #"prometheus-nginx-exporter"  # for prometheus
 )
 cat tmp/isu-servers | xargs -I{} ssh {} "sudo apt-get update && sudo apt-get install -y ${APT_TOOLS[*]}"
 
