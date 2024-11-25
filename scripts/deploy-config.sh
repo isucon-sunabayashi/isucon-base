@@ -38,29 +38,29 @@ cat tmp/isu-servers | xargs -I{} ssh {} 'sudo systemctl restart mysql'
 cat tmp/isu-servers | xargs -I{} ssh {} 'sudo chown -R mysql:mysql /var/log/mysql/ && sudo chmod 777 -R /var/log/mysql/'
 cat tmp/isu-servers | xargs -I{} ssh {} 'echo ----[ {} ] && systemctl status mysql'
 
+##
+## prometheus-mysqld-exporter
+##
+#echo ''
+#echo '----[ 🚀Deploy prometheus-mysqld-exporter config🚀 ]'
+#readonly PROMETHEUS_MYSQLD_EXPORTER_PATH='/etc/default/prometheus-mysqld-exporter'
+#cat tmp/isu-servers | xargs -I{} rsync -az --rsync-path='sudo rsync' "./isu-common${PROMETHEUS_MYSQLD_EXPORTER_PATH}" "{}:${PROMETHEUS_MYSQLD_EXPORTER_PATH}"
+#cat tmp/isu-servers | xargs -I{} ssh {} "sudo chown prometheus:prometheus ${PROMETHEUS_MYSQLD_EXPORTER_PATH} && sudo chmod 644 ${PROMETHEUS_MYSQLD_EXPORTER_PATH}"
+#cat tmp/isu-servers | xargs -I{} ssh {} 'sudo systemctl restart prometheus-mysqld-exporter'
+#cat tmp/isu-servers | xargs -I{} ssh {} 'echo ----[ {} ] && systemctl status prometheus-mysqld-exporter'
 #
-# prometheus-mysqld-exporter
-#
-echo ''
-echo '----[ 🚀Deploy prometheus-mysqld-exporter config🚀 ]'
-readonly PROMETHEUS_MYSQLD_EXPORTER_PATH='/etc/default/prometheus-mysqld-exporter'
-cat tmp/isu-servers | xargs -I{} rsync -az --rsync-path='sudo rsync' "./isu-common${PROMETHEUS_MYSQLD_EXPORTER_PATH}" "{}:${PROMETHEUS_MYSQLD_EXPORTER_PATH}"
-cat tmp/isu-servers | xargs -I{} ssh {} "sudo chown prometheus:prometheus ${PROMETHEUS_MYSQLD_EXPORTER_PATH} && sudo chmod 644 ${PROMETHEUS_MYSQLD_EXPORTER_PATH}"
-cat tmp/isu-servers | xargs -I{} ssh {} 'sudo systemctl restart prometheus-mysqld-exporter'
-cat tmp/isu-servers | xargs -I{} ssh {} 'echo ----[ {} ] && systemctl status prometheus-mysqld-exporter'
-
-#
-# Fluent-Bit
-#
-echo ''
-echo '----[ 🚀Deploy Fluent-Bit config🚀 ]'
-readonly FLUENT_BIT_PATH='/etc/fluent-bit/'
-cat tmp/isu-servers | xargs -I{} rsync -az --rsync-path='sudo rsync' "./isu-common${FLUENT_BIT_PATH}" "{}:${FLUENT_BIT_PATH}"
-cat tmp/isu-servers | xargs -I{} ssh {} "sudo chown root:root ${FLUENT_BIT_PATH} && sudo chmod 644 ${FLUENT_BIT_PATH}"
-cat tmp/isu-servers | xargs -I{} ssh {} "sudo mkdir -p /var/log/fluent-bit/ && sudo chown -R root:root /var/log/fluent-bit/ && sudo chmod 777 -R /var/log/fluent-bit/"
-cat tmp/isu-servers | xargs -I{} ssh {} '(curl -s "http://localhost:3100/ready" &> /dev/null && sudo systemctl restart fluent-bit) || echo "fluent-bit は再起動しませんでした"'
-cat tmp/isu-servers | xargs -I{} ssh {} "sudo chown -R root:root /var/log/fluent-bit/ && sudo chmod 777 -R /var/log/fluent-bit/"
-cat tmp/isu-servers | xargs -I{} ssh {} 'echo ----[ {} ] && (systemctl status fluent-bit || true)'
+##
+## Fluent-Bit
+##
+#echo ''
+#echo '----[ 🚀Deploy Fluent-Bit config🚀 ]'
+#readonly FLUENT_BIT_PATH='/etc/fluent-bit/'
+#cat tmp/isu-servers | xargs -I{} rsync -az --rsync-path='sudo rsync' "./isu-common${FLUENT_BIT_PATH}" "{}:${FLUENT_BIT_PATH}"
+#cat tmp/isu-servers | xargs -I{} ssh {} "sudo chown root:root ${FLUENT_BIT_PATH} && sudo chmod 644 ${FLUENT_BIT_PATH}"
+#cat tmp/isu-servers | xargs -I{} ssh {} "sudo mkdir -p /var/log/fluent-bit/ && sudo chown -R root:root /var/log/fluent-bit/ && sudo chmod 777 -R /var/log/fluent-bit/"
+#cat tmp/isu-servers | xargs -I{} ssh {} '(curl -s "http://localhost:3100/ready" &> /dev/null && sudo systemctl restart fluent-bit) || echo "fluent-bit は再起動しませんでした"'
+#cat tmp/isu-servers | xargs -I{} ssh {} "sudo chown -R root:root /var/log/fluent-bit/ && sudo chmod 777 -R /var/log/fluent-bit/"
+#cat tmp/isu-servers | xargs -I{} ssh {} 'echo ----[ {} ] && (systemctl status fluent-bit || true)'
 
 #
 # 通知
