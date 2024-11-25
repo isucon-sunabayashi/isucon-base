@@ -20,7 +20,7 @@ getting-started: ## Getting Started
 	@echo '03: make check-ssh'
 	@echo '04: make setup'
 	@echo '05: make show-services'
-	@echo '06: cat .env || cp .env.sample .env'
+	@echo '06: cat .env || cp .env.sample .env && direnv allow'
 	@echo '07: 手動: ssh isu-1をして.envに必要情報を記述'
 	@echo '```.env'
 	@echo 'REMOTE_APP_PATH=golangのアプリがある場所'
