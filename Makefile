@@ -1,3 +1,7 @@
+.PHONY: check-required-commands
+check-required-commands: ## 必要なコマンドが入っているかチェック
+	@bash scripts/check-required-commands.sh
+
 .PHONY: bench
 bench: ## benchmarkerを実行(private-isu用)
 	@make clean-logs
