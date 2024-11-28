@@ -15,10 +15,13 @@ echo '----[ 🚀Create index🚀 ]'
 #
 readonly DB_NAME='isuconp'
 while read server; do
-  ssh -n ${server} "sudo mysql ${DB_NAME} -e 'create index idx_post_id on comments (post_id);'" || echo '既にindex有り'
+  index_name='idx_post_id'
+  ssh -n ${server} "sudo mysql ${DB_NAME} -e 'create index ${index_name} on comments (post_id);'" || echo "index: ${index_name}, 既存(Duplicate key nameならば)"
   # DROP Index
   #ssh -n ${server} "sudo mysql ${DB_NAME} -e 'drop index idx_post_id on comments;'" || echo 'index無し'
 done < <(cat tmp/isu-servers)
+
+echo 'make show-tables で確認してください'
 
 #
 # 通知

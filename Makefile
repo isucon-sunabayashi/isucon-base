@@ -50,6 +50,7 @@ getting-started: ## Getting Started
 	@echo '20: make show-table-counts(ベンチマーク後、user数が増えているはず)'
 	@echo '21: make show-tables'
 	@echo '22: 改善 → git push → 11や13へ'
+	@echo 'ex: make create-index (scripts/create-index.sh)'
 
 tmp/hosts.csv: ## tmp/hosts.csvをAWSと通信して作成
 	@bash scripts/create-hosts-csv.sh
@@ -128,6 +129,10 @@ alp-result: ## alpの結果を表示
 .PHONY: slow-query-result
 slow-query-result: ## slow-queryの結果を表示
 	@cat tmp/analysis/latest/analyzed-pt-query-digest-slow.log.* | less
+
+.PHONY: create-index
+create-index: ## scripts/create-index.sh
+	@bash scripts/create-index.sh
 
 ################################################################################
 # Deploy
