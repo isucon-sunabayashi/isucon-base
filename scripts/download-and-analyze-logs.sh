@@ -84,8 +84,11 @@ while read server; do
   alp json --sort=sum --reverse --file ${LATEST_DIR_PATH}/nginx-access.log.${server} \
     -m '/image/\d+.(jpg|png|gif),/posts/\d+,/@\w+' \
     >> "${OUTPUT_FILE}"
-  echo "less ${OUTPUT_FILE}"
+  echo "alp結果: ${OUTPUT_DIR_PATH}/analyzed-alp-nginx-access.log.${server}"
+  echo "シンボリックリンク(@latest): ${OUTPUT_FILE} でもOK"
 done < ${INPUT_FILE}
+
+echo '--'
 
 #
 # MySQLのスロークエリを分析
@@ -93,8 +96,13 @@ done < ${INPUT_FILE}
 while read server; do
   OUTPUT_FILE="${LATEST_DIR_PATH}/analyzed-pt-query-digest-slow.log.${server}"
   pt-query-digest --limit 10 ${LATEST_DIR_PATH}/mysql-slow.log.${server} > "${OUTPUT_FILE}"
-  echo "less ${OUTPUT_FILE}"
+  echo "pt-query-digest結果: ${OUTPUT_DIR_PATH}/analyzed-alp-nginx-access.log.${server}"
+  echo "シンボリックリンク(@latest): ${OUTPUT_FILE} でもOK"
 done < <(cat ${INPUT_FILE})
+
+echo '-----[ make task で閲覧可 ]'
+echo 'make alp-result'
+echo 'make slow-query-result'
 
 #
 # 通知
