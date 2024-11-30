@@ -50,11 +50,13 @@ getting-started: ## Getting Started
 	@echo '20: make show-table-counts(ベンチマーク後、user数が増えているはず)'
 	@echo '21: make show-tables'
 	@echo '22: 改善 → git push → 11や13へ'
-	@echo 'ex: make create-index (scripts/create-index.sh)'
-	@echo 'ex: `grep -rn "Open(" isu-webapp/` して、 `&interpolateParams=true` を追加する'
-	@echo 'ex: `make put-pprof-go` すると、pprofの用意'
-	@echo 'ex: `make put-cache-users-sample-go` すると、キャッシュのサンプルを置く'
-	@echo 'ex: `make put-writeout-images-go` すると、画像書き出しのone shotスクリプトを置く'
+	@echo '----'
+	@echo 'ex-app: `grep -rn "Open(" isu-webapp/` して、 `&interpolateParams=true` を追加する'
+	@echo 'ex-app: `make put-pprof-go` すると、pprofの用意'
+	@echo 'ex-app: `make put-cache-users-sample-go` すると、キャッシュのサンプルを置く'
+	@echo 'ex-app: `make put-writeout-images-go` すると、画像書き出しのone shotスクリプトを置く'
+	@echo 'ex-db: `make create-index` (scripts/create-index.shをいじる)'
+	@echo 'ex-nginx: `cat snippets/nginx-static-files/README.md` すると、静的ファイルをnginxで返す方法'
 
 tmp/hosts.csv: ## tmp/hosts.csvをAWSと通信して作成
 	@bash scripts/create-hosts-csv.sh
