@@ -51,6 +51,7 @@ getting-started: ## Getting Started
 	@echo '21: make show-tables'
 	@echo '22: 改善 → git push → 11や13へ'
 	@echo 'ex: make create-index (scripts/create-index.sh)'
+	@echo 'ex: `grep -rn "Open(" isu-webapp/` して、 `&interpolateParams=true` を追加する'
 
 tmp/hosts.csv: ## tmp/hosts.csvをAWSと通信して作成
 	@bash scripts/create-hosts-csv.sh
