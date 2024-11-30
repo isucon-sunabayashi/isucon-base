@@ -53,6 +53,7 @@ getting-started: ## Getting Started
 	@echo 'ex: make create-index (scripts/create-index.sh)'
 	@echo 'ex: `grep -rn "Open(" isu-webapp/` して、 `&interpolateParams=true` を追加する'
 	@echo 'ex: make put-pprof-go'
+	@echo 'ex: make put-cache-users-sample-go'
 
 tmp/hosts.csv: ## tmp/hosts.csvをAWSと通信して作成
 	@bash scripts/create-hosts-csv.sh
@@ -139,6 +140,10 @@ create-index: ## scripts/create-index.sh
 .PHONY: put-pprof-go
 put-pprof-go: ## pprof.goを置く
 	@bash scripts/put-pprof-go.sh
+
+.PHONY: put-cache-users-sample-go
+put-cache-users-sample-go: ## cache_users_sample.goを置く
+	@bash scripts/put-cache-users-sample-go.sh
 
 ################################################################################
 # Deploy
