@@ -15,7 +15,7 @@ echo '----[ 🚀Create index🚀 ]'
 #
 readonly DB_NAME='isuconp'
 echo '--'
-echo "DB_NAME: ${DB_NAME}"
+echo "DB_NAME(合っているか確認してください): ${DB_NAME}"
 echo '--'
 while read server; do
   #
@@ -23,7 +23,7 @@ while read server; do
   #
   # コピペ時: ここから
   index_name='idx_post_id'
-  sql="create index ${index_name} on comments (post_id);"
+  sql="create index ${index_name} on comments (post_id, created_at desc);"
   echo "${sql}"
   ssh -n ${server} "sudo mysql ${DB_NAME} -e '${sql}'" || echo "index: ${index_name}は既に有るので問題なし(Duplicate key nameならば)"
   echo ''
