@@ -23,6 +23,8 @@ readonly APT_TOOLS=(
   "ripgrep"
   "psmisc"                     # pstree
   "percona-toolkit"            # pt-query-digest
+  "gv"                         # pprofで利用
+  "graphviz"                   # pprofで利用
   #"prometheus-node-exporter"   # for prometheus
   #"prometheus-mysqld-exporter" # for prometheus
   #"prometheus-nginx-exporter"  # for prometheus
