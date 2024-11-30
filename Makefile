@@ -34,7 +34,7 @@ getting-started: ## Getting Started
 	@echo '```'
 	@echo '08: make download でisu-commonやisu-webにDL'
 	@echo '09: make switch-to-golang-isu-app で動くアプリの言語を変更する'
-	@echo '10: 手動: ssh isu-1をしてgolangのappをビルドする方法をscripts/deploy-app.shに反映、09の空deployできるまで'
+	@echo '10: 手動: ssh isu-1をしてgolangのappをビルドする方法をscripts/deploy-app.shに反映、次の空deploy-appできるまで'
 	@echo '11: make deploy-app'
 	@echo '12: make setup-1st-bench'
 	@echo '- isu-common/etc/nginx/nginx.confに設定をペースト'
