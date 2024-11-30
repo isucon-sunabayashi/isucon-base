@@ -21,6 +21,7 @@ readonly APT_TOOLS=(
   "yq"
   "git"
   "ripgrep"
+  "tree"
   "psmisc"                     # pstree
   "percona-toolkit"            # pt-query-digest
   "gv"                         # pprofで利用
