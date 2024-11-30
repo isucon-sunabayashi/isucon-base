@@ -12,11 +12,11 @@ import (
 // アプリをデプロイ
 //
 // ベンチ直前(60秒間プロファイリング)
-// go tool pprof -seconds 60 -http=0.0.0.0:1080 http://localhost:6060/debug/pprof/profile
+// go tool pprof -seconds 70 -http=0.0.0.0:1080 http://localhost:6060/debug/pprof/profile
 //
 // 60秒後に、${パブリックIP}:1080でアクセス可能
 // pprof/ディレクトリ以下に収集したプロファイルが出力される
-// go tool pprof -seconds 60 -http=0.0.0.0:1080 pprof/pprof.app.samples.cpu.001.pb.gz
+// go tool pprof -http=0.0.0.0:1080 pprof/pprof.app.samples.cpu.001.pb.gz
 // で、収集後のファイルを利用して1080で開くことも可能
 //
 // `lsof -i:6060` で確認可能
