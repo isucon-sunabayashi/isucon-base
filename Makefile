@@ -52,6 +52,7 @@ getting-started: ## Getting Started
 	@echo '22: 改善 → git push → 11や13へ'
 	@echo 'ex: make create-index (scripts/create-index.sh)'
 	@echo 'ex: `grep -rn "Open(" isu-webapp/` して、 `&interpolateParams=true` を追加する'
+	@echo 'ex: make put-pprof-go'
 
 tmp/hosts.csv: ## tmp/hosts.csvをAWSと通信して作成
 	@bash scripts/create-hosts-csv.sh
@@ -134,6 +135,10 @@ slow-query-result: ## slow-queryの結果を表示
 .PHONY: create-index
 create-index: ## scripts/create-index.sh
 	@bash scripts/create-index.sh
+
+.PHONY: put-pprof-go
+put-pprof-go: ## pprof.goを置く
+	@bash scripts/put-pprof-go.sh
 
 ################################################################################
 # Deploy
