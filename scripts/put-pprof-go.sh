@@ -13,7 +13,7 @@ echo '-------[ 🚀pprof.goを置きます🚀 ]'
 #
 # pprof.goをコピー
 #
-cp scripts/pprof.go isu-webapp/golang/
+cp scripts/pprof.go ${LOCAL_APP_PATH}/
 
 # 使い方
 # main()にpprof()を記載
