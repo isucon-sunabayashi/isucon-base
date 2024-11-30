@@ -11,12 +11,6 @@ set -eu
 echo '-------[ 🚀Show tables🚀 ]'
 
 #
-# DBテーブル一覧
-#
-readonly SQL="select table_schema as DB, table_name from information_schema.tables where table_schema like '%isu%' order by table_schema;"
-cat tmp/isu-servers | head -n1 | xargs -I{} ssh {} "sudo mysql -e \"${SQL}\"" | tee tmp/db-tables
-
-#
 # 各テーブルのテーブルのCOUNT
 #
 #cat tmp/db-tables | grep -v '^DB'

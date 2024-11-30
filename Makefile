@@ -170,12 +170,15 @@ show-services: ## isuconに関連があるサービス一覧表示
 	@bash scripts/show-services.sh
 
 .PHONY: show-table-counts
-show-table-counts: ## isuconに関連があるdb.tableのカウント一覧
+show-table-counts: tmp/db-tables ## isuconに関連があるdb.tableのカウント一覧
 	@bash scripts/show-table-counts.sh
 
 .PHONY: show-tables
-show-tables: ## isuconに関連があるdb.table情報一覧
+show-tables: tmp/db-tables ## isuconに関連があるdb.table情報一覧
 	@bash scripts/show-tables.sh
+
+tmp/db-tables: ## tmp/db-tablesを作成(isuconに関連がある)
+	@bash scripts/create-db-tables.sh
 
 ################################################################################
 # Utility-Command help
