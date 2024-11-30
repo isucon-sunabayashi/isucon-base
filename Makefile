@@ -57,6 +57,7 @@ getting-started: ## Getting Started
 	@echo 'ex-app: `make put-writeout-images-go` すると、画像書き出しのone shotスクリプトを置く'
 	@echo 'ex-db: `make create-index` (scripts/create-index.shをいじる)'
 	@echo 'ex-nginx: `cat snippets/nginx-static-files/README.md` すると、静的ファイルをnginxで返す方法'
+	@echo 'ex-nginx: `cat snippets/nginx-images/README.md` すると、画像ファイルをnginxで返す方法(少しappとも関係あり)'
 
 tmp/hosts.csv: ## tmp/hosts.csvをAWSと通信して作成
 	@bash scripts/create-hosts-csv.sh
