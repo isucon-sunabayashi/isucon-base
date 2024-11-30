@@ -177,6 +177,10 @@ show-table-counts: tmp/db-tables ## isuconに関連があるdb.tableのカウン
 show-tables: tmp/db-tables ## isuconに関連があるdb.table情報一覧
 	@bash scripts/show-tables.sh
 
+.PHONY: update-db-statistcs
+update-db-statistics: tmp/db-tables ## isuconに関連があるdb.table情報一覧
+	@bash scripts/update-db-statistics.sh
+
 tmp/db-tables: ## tmp/db-tablesを作成(isuconに関連がある)
 	@bash scripts/create-db-tables.sh
 
