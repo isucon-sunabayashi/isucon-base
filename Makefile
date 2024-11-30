@@ -156,6 +156,10 @@ deploy-config: ## 各サーバに設定ファイルをデプロイ
 deploy-app: ## 各サーバにAppをデプロイ
 	@bash scripts/deploy-app.sh
 
+.PHONY: deploy-one-shot-scripts
+deploy-one-shot-scripts: ## 各サーバにdeploy-one-shot-scriptsをデプロイ
+	@bash scripts/deploy-one-shot-scripts.sh
+
 ################################################################################
 # Switch to golang app
 ################################################################################
