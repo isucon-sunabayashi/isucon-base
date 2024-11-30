@@ -52,8 +52,9 @@ getting-started: ## Getting Started
 	@echo '22: 改善 → git push → 11や13へ'
 	@echo 'ex: make create-index (scripts/create-index.sh)'
 	@echo 'ex: `grep -rn "Open(" isu-webapp/` して、 `&interpolateParams=true` を追加する'
-	@echo 'ex: make put-pprof-go'
-	@echo 'ex: make put-cache-users-sample-go'
+	@echo 'ex: `make put-pprof-go` すると、pprofの用意'
+	@echo 'ex: `make put-cache-users-sample-go` すると、キャッシュのサンプルを置く'
+	@echo 'ex: `make put-writeout-images-go` すると、画像書き出しのone shotスクリプトを置く'
 
 tmp/hosts.csv: ## tmp/hosts.csvをAWSと通信して作成
 	@bash scripts/create-hosts-csv.sh
@@ -144,6 +145,10 @@ put-pprof-go: ## pprof.goを置く
 .PHONY: put-cache-users-sample-go
 put-cache-users-sample-go: ## cache_users_sample.goを置く
 	@bash scripts/put-cache-users-sample-go.sh
+
+.PHONY: put-writeout-images-go
+put-writeout-images-go: ## writeout-imagesを置く
+	@bash scripts/put-writeout-images-go.sh
 
 ################################################################################
 # Deploy
