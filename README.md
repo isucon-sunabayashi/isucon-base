@@ -1,13 +1,21 @@
 ## isucon
 
+issuesに貼り付ける
+
 1. CloudFormationで環境を整える
 2. 待っている間、アプリドキュメンテーションを読む
 3. make create-sshconfig
 4. make check-ssh
 5. make setup
 6. make download
-8. make show-services
-9. make switch-to-golang-isu-app
+7. make show-services
+  - [ ] サービス一覧の確認した
+  - [ ] DB名の確認した
+  - [ ] DBのユーザーの確認した
+  - [ ] DBのユーザーのパスワードを確認した
+  - [ ] テーブル一覧の確認した
+  - [ ] テーブル一覧の確認した
+8. make switch-to-golang-isu-app
 
 ## 継続的Kaizenの準備
 
