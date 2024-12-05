@@ -4,10 +4,9 @@
 # ディレクトリだけgit管理下に置きたい場合、.gitkeepを最後にする
 #
 !tmp/
+!**/tmp/
 tmp/*
-
-suburi/private-isu/tmp/*
-!suburi/private-isu/tmp/
+**/tmp/*
 
 #
 # cloudformation.yml はいつでもignore
@@ -17,15 +16,9 @@ cloudformation.yml
 #
 # 素振りの時は削除
 #
-!webapp/
-isu-webapp/*
+!isu-webapp/
 !isu-common/
-isu-common/*
-isu-1/*
-isu-2/*
-isu-3/*
-isu-4/*
-isu-5/*
+isu-*/*
 
 # 最後にする
 !.gitkeep
