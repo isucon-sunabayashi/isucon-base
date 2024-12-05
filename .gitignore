@@ -10,6 +10,11 @@ suburi/private-isu/tmp/*
 !suburi/private-isu/tmp/
 
 #
+# cloudformation.yml はいつでもignore
+#
+cloudformation.yml
+
+#
 # 素振りの時は削除
 #
 !webapp/
