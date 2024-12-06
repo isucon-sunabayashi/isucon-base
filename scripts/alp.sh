@@ -16,6 +16,7 @@ echo '-------[ 🚀alp🚀 ]'
 #
 readonly LATEST_DIR_PATH="tmp/analysis/latest"
 readonly COMMAND="alp json --sort=sum --reverse --file ${LATEST_DIR_PATH}/nginx-access.log.isu-1 -m '${ALP_MATCHING_GROUPS}'"
+#readonly COMMAND="alp json --sort=sum --reverse --file ${LATEST_DIR_PATH}/nginx-access.log.isu-1"
 echo '--[ COMMAND ]'
 echo "${COMMAND}"
 echo '--'
