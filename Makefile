@@ -81,8 +81,9 @@ setup: ## 各isu-serverのセットアップ
 setup-1st-bench: ## 1回目のbenchmarkに必要なことを各isu-serverのセットアップ
 	@bash scripts/setup-1st-bench-nginx.sh
 	@bash scripts/setup-1st-bench-mysql.sh
-	@bash scripts/setup-1st-bench-prometheus-mysqld-exporter.sh
-	@bash scripts/setup-1st-bench-fluent-bit.sh
+	# prometheus と fluent-bitはまた今度
+	#@bash scripts/setup-1st-bench-prometheus-mysqld-exporter.sh
+	#@bash scripts/setup-1st-bench-fluent-bit.sh
 
 .PHONY: reup
 reup: ## コンテナを再アップ
