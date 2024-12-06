@@ -26,6 +26,7 @@ getting-started: ## Getting Started
 	@echo '05: make show-services'
 	@echo '06: cat .env || cp .env.sample .env && direnv allow'
 	@echo '07: 手動: ssh isu-1をして.envに必要情報を記述'
+	@echo '- make show-servicesで確認可能'
 	@echo '```.env'
 	@echo 'REMOTE_APP_PATH=golangのアプリがある場所'
 	@echo 'LOCAL_PATH=ローカルにDLしたり、デプロイ(rsync)の時に利用'
