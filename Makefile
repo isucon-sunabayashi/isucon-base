@@ -128,6 +128,10 @@ clean-logs: ## ログファイルを削除
 download-and-analyze-logs: ## ログファイルをダウンロードして分析
 	@bash scripts/download-and-analyze-logs.sh
 
+.PHONY: alp
+alp: ## alpコマンドを tmp/analysis/latest/nginx-access.log.isu-1 に打つ(マッチンググループのデバッグ用)
+	@bash scripts/alp.sh
+
 .PHONY: alp-result
 alp-result: ## alpの結果を表示
 	@cat tmp/analysis/latest/analyzed-alp-nginx-access.log.*
