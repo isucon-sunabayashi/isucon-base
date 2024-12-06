@@ -18,7 +18,9 @@ cat tmp/isu-servers | xargs -I{} ssh {} 'ls alp > /dev/null || git clone --depth
 #
 # build & install
 #
-cat tmp/isu-servers | xargs -I{} ssh {} "(command -v alp && echo 'alpはインストール済みです') || (export PATH=\$PATH:/home/isucon/.local/go/bin && cd alp && make build && sudo mv alp /usr/local/bin/)"
+# private-isuのgoの場所: /home/isucon/.local/go/bin
+# isunarabe13のgoの場所: /home/isucon/local/golang/bin
+cat tmp/isu-servers | xargs -I{} ssh {} "(command -v alp && echo 'alpはインストール済みです') || (export PATH=\$PATH:/home/isucon/.local/go/bin:/home/isucon/local/golang/bin && cd alp && make build && sudo mv alp /usr/local/bin/)"
 
 #
 # 確認
