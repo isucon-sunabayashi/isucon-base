@@ -33,10 +33,10 @@ cat tmp/isu-servers | xargs -I{} ssh {} 'sudo chown -R mysql:mysql /var/log/mysq
 #
 # Fluent-Bit
 #
-echo '----[ 🚀Clean Fluent-Bit logs🚀 ]'
-readonly FLUENT_BIT_LOG_PATH='/var/log/fluent-bit/fluent-bit.log'
-cat tmp/isu-servers | xargs -I{} ssh {} "(ls ${FLUENT_BIT_LOG_PATH} &> /dev/null && sudo mv ${FLUENT_BIT_LOG_PATH} ${FLUENT_BIT_LOG_PATH}.old) || echo 'fluent-bit.log が存在しません'"
-cat tmp/isu-servers | xargs -I{} ssh {} '(curl -s "http://localhost:3100/ready" &> /dev/null && sudo systemctl restart fluent-bit) || echo "fluent-bit は再起動しませんでした"'
+#echo '----[ 🚀Clean Fluent-Bit logs🚀 ]'
+#readonly FLUENT_BIT_LOG_PATH='/var/log/fluent-bit/fluent-bit.log'
+#cat tmp/isu-servers | xargs -I{} ssh {} "(ls ${FLUENT_BIT_LOG_PATH} &> /dev/null && sudo mv ${FLUENT_BIT_LOG_PATH} ${FLUENT_BIT_LOG_PATH}.old) || echo 'fluent-bit.log が存在しません'"
+#cat tmp/isu-servers | xargs -I{} ssh {} '(curl -s "http://localhost:3100/ready" &> /dev/null && sudo systemctl restart fluent-bit) || echo "fluent-bit は再起動しませんでした"'
 
 #
 # 通知
