@@ -124,6 +124,10 @@ port-forward-3100-isu-5: ## 3100番ポートをフォワード
 ################################################################################
 # Kaizen
 ################################################################################
+.PHONY: initialize-webapp
+initialize-webapp: ## アプリのinitialize URLを叩く
+	@bash scripts/initialize-webapp.sh
+
 .PHONY: clean-logs
 clean-logs: ## ログファイルを削除
 	@bash scripts/clean-logs.sh
