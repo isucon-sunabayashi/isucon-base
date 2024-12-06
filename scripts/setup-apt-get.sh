@@ -18,7 +18,7 @@ readonly APT_TOOLS=(
   "neovim"
   "make"
   "jq"
-  "yq"
+  # "yq" # isunarabe13ではpackageがなかったため、コメントアウト
   "git"
   "ripgrep"
   "tree"
