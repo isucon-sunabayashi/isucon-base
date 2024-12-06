@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-set -eu
+set -eu -o pipefail
 #set -x
 # -e: エラーが発生した時点でスクリプトを終了
 # -u: 未定義の変数を使用した場合にエラーを発生
 # -x: スクリプトの実行内容を表示(debugで利用)
+# -o pipefail: パイプライン内のコマンドが失敗した場合にパイプライン全体を失敗として扱う
 
 #
 # 通知
@@ -11,12 +12,21 @@ set -eu
 echo '-------[ 🚀Deploy App🚀 ]'
 
 #
-# App
-# .envにて、LOCAL_APP_PATH, REMOTE_APP_PATH, GO_APP_NAMEを設定していること
-# 例: REMOTE_APP_PATH=/home/isucon/private_isu/webapp/golang, LOCAL_APP_PATH=./isu-webapp/golang, GO_APP_NAME=isu-go
+# ビルドコマンド
 #
-cat tmp/isu-servers | xargs -I{} rsync -az "${LOCAL_APP_PATH}/" "{}:${REMOTE_APP_PATH}/"
-cat tmp/isu-servers | xargs -I{} ssh {} "export PATH=\$PATH:/home/isucon/.local/go/bin && cd ${REMOTE_APP_PATH} && make app && sudo systemctl restart ${GO_APP_NAME}"
+readonly SSH_COMMAND="export PATH=\$PATH:${ISU_GOLANG_PATH} && cd ${REMOTE_APP_PATH} && ${BUILD_COMMAND} && sudo systemctl restart ${GO_APP_NAME}"
+echo '--[ 各サーバーでrsync後、以下のコマンドを打ちます ]'
+echo "SSH_COMMAND: ${SSH_COMMAND}"
+echo '--'
+
+#
+# rsync と  deploy
+#
+while read -r server; do
+  echo "--[ ${server} ]"
+  rsync -az "${LOCAL_APP_PATH}/" "${server}:${REMOTE_APP_PATH}/"
+  ssh -n ${server} "${SSH_COMMAND}"
+done < <(cat tmp/isu-servers)
 
 #
 # 通知
