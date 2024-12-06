@@ -11,13 +11,14 @@ set -eu
 echo '-------[ 🚀Show tables🚀 ]'
 
 #
-# 各テーブルのテーブルのCOUNT
+# 各DBの構造
 #
 #cat tmp/db-tables | grep -v '^DB'
 while read -r server; do
   echo "----[ ${server} ]"
   while read -r db table; do
+    #ssh -n ${server} "sudo mysqlshow -k ${db} ${table}"
+    ssh -n ${server} "sudo mysqldump -d ${db}"
     echo ''
-    ssh -n ${server} "sudo mysqlshow -k ${db} ${table}"
-  done < <(cat tmp/db-tables | grep -v '^DB')
+  done < <(cat tmp/db-tables | grep -v '^DB' | cut -f1 | sort | uniq)
 done < <(cat tmp/isu-servers)
