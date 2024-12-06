@@ -37,4 +37,6 @@ grep -v -E '^#' ./isu-common/etc/mysql/mysql.conf.d/mysqld.cnf \
 #
 # 通知
 #
+echo '----'
 echo '👍️Done: isu-common/etc/mysql/mysql.conf.d/mysqld.cnf'
+echo '----'
