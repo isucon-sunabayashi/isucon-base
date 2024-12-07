@@ -82,7 +82,7 @@ while read server; do
   echo 'P90: レスポンスの90%がこの数値以下のレスポンスタイム' >> "${OUTPUT_FILE}"
   echo 'STDDEV: 標準偏差(Standard Deviation)、値が大きいほどばらつきが大きい(=不安定)' >> "${OUTPUT_FILE}"
   alp json --sort=sum --reverse --file ${LATEST_DIR_PATH}/nginx-access.log.${server} \
-    -m '/image/\d+.(jpg|png|gif),/posts/\d+,/@\w+' \
+    -m "'${ALP_MATCHING_GROUPS}'" \
     >> "${OUTPUT_FILE}"
   echo "alp結果: ${OUTPUT_DIR_PATH}/analyzed-alp-nginx-access.log.${server}"
   echo "シンボリックリンク(@latest): ${OUTPUT_FILE} でもOK"
